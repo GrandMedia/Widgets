@@ -1,0 +1,34 @@
+{
+	"name": "grand-media/widgets",
+	"description": "GrandMedia Widgets",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Grand Media s.r.o.",
+			"email": "vesely@grandmedia.cz",
+			"homepage": "https://www.grandmedia.cz"
+		}
+	],
+	"support": {
+		"issues": "https://github.com/GrandMedia/Widgets/issues"
+	},
+	"require": {
+		"php": ">=7.1",
+		"beberlei/assert": "^2.7",
+		"nette/application": "^2.4"
+	},
+	"require-dev": {
+		"grand-media/coding-standard": "^1.0",
+		"nette/tester": "~1.7"
+	},
+	"autoload": {
+		"psr-4": {
+			"GrandMedia\\Widgets\\": "src/"
+		}
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"GrandMediaTests\\Widgets\\": "tests/"
+		}
+	}
+}
