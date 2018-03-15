@@ -54,24 +54,26 @@ final class Items
 	private function sort(): void
 	{
 		$index = 0;
-
-		foreach ($this->items as &$item) {
-			$item = [$index++, $item];
+		$tmp = [];
+		foreach ($this->items as $item) {
+			$tmp[] = [$index++, $item];
 		}
 
-		\usort($this->items, function (array $a, array $b) {
+		\usort($tmp, function (array $a, array $b) {
 			$result = \call_user_func(
-				function (Item $one, Item $two) {
+				function (Item $one, Item $two): int {
 					return $one->getPosition() - $two->getPosition();
 				},
 				$a[1],
 				$b[1]
 			);
+
 			return $result === 0 ? $a[0] - $b[0] : $result;
 		});
 
-		foreach ($this->items as &$item) {
-			$item = $item[1];
+		$this->items = [];
+		foreach ($tmp as $array) {
+			$this->items[] = $array[1];
 		}
 
 		$this->sorted = true;
