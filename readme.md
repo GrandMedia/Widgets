@@ -1,4 +1,4 @@
-GrandMedia/Items
+GrandMedia/Widgets
 ======
 
 [![Build Status](https://travis-ci.org/GrandMedia/Widgets.svg?branch=master)](https://travis-ci.org/GrandMedia/Widgets)
@@ -13,5 +13,5 @@ Installation
 The best way to install GrandMedia/Items is using  [Composer](http://getcomposer.org/):
 
 ```sh
-$ composer require grand-media/widgets:@dev
+$ composer require grand-media/widgets
 ```
