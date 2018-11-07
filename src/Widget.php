@@ -4,6 +4,7 @@ namespace GrandMedia\Widgets;
 
 use Assert\Assertion;
 use Nette\Application\UI\Control;
+use Nette\Localization\ITranslator;
 
 final class Widget extends \Nette\Application\UI\Control
 {
@@ -18,7 +19,12 @@ final class Widget extends \Nette\Application\UI\Control
 	 */
 	private $templateFile;
 
-	public function __construct(Items $items, string $templateFile)
+	/**
+	 * @var \Nette\Localization\ITranslator|null
+	 */
+	private $translator;
+
+	public function __construct(Items $items, string $templateFile, ?ITranslator $translator = null)
 	{
 		parent::__construct();
 
@@ -26,6 +32,7 @@ final class Widget extends \Nette\Application\UI\Control
 
 		$this->items = $items;
 		$this->templateFile = $templateFile;
+		$this->translator = $translator;
 	}
 
 	public function render(): void
@@ -33,6 +40,7 @@ final class Widget extends \Nette\Application\UI\Control
 		/** @var \Nette\Bridges\ApplicationLatte\Template $template */
 		$template = $this->getTemplate();
 		$template->setFile($this->templateFile);
+		$template->setTranslator($this->translator);
 
 		$template->setParameters(
 			[
