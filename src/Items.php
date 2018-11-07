@@ -3,6 +3,8 @@
 namespace GrandMedia\Widgets;
 
 use Nette\Application\UI\Control;
+use function Safe\sprintf;
+use function Safe\usort;
 
 final class Items
 {
@@ -32,7 +34,7 @@ final class Items
 		}
 
 		if (!isset($this->items[$index])) {
-			throw new \InvalidArgumentException(\sprintf('Index %d does not exist.', $index));
+			throw new \InvalidArgumentException(sprintf('Index %d does not exist.', $index));
 		}
 
 		return $this->items[$index]->getControl();
@@ -63,9 +65,9 @@ final class Items
 			$tmp[] = [$index++, $item];
 		}
 
-		\usort(
+		usort(
 			$tmp,
-			function (array $a, array $b) {
+			function (array $a, array $b): int {
 				$result = \call_user_func(
 					function (Item $one, Item $two): int {
 						return $one->getPosition() - $two->getPosition();
