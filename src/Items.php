@@ -7,10 +7,14 @@ use Nette\Application\UI\Control;
 final class Items
 {
 
-	/** @var \GrandMedia\Widgets\Item[] */
+	/**
+	 * @var \GrandMedia\Widgets\Item[]
+	 */
 	private $items = [];
 
-	/** @var bool  */
+	/**
+	 * @var bool
+	 */
 	private $sorted = false;
 
 	public function add(Item $item): void
@@ -59,17 +63,20 @@ final class Items
 			$tmp[] = [$index++, $item];
 		}
 
-		\usort($tmp, function (array $a, array $b) {
-			$result = \call_user_func(
-				function (Item $one, Item $two): int {
-					return $one->getPosition() - $two->getPosition();
-				},
-				$a[1],
-				$b[1]
-			);
+		\usort(
+			$tmp,
+			function (array $a, array $b) {
+				$result = \call_user_func(
+					function (Item $one, Item $two): int {
+						return $one->getPosition() - $two->getPosition();
+					},
+					$a[1],
+					$b[1]
+				);
 
-			return $result === 0 ? $a[0] - $b[0] : $result;
-		});
+				return $result === 0 ? $a[0] - $b[0] : $result;
+			}
+		);
 
 		$this->items = [];
 		foreach ($tmp as $array) {

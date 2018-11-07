@@ -8,10 +8,14 @@ use Nette\Application\UI\Control;
 final class Item
 {
 
-	/** @var int */
+	/**
+	 * @var int
+	 */
 	private $position;
 
-	/** @var callable */
+	/**
+	 * @var callable
+	 */
 	private $factory;
 
 	public function __construct(int $position, callable $factory)

@@ -8,10 +8,14 @@ use Nette\Application\UI\Control;
 final class Widget extends \Nette\Application\UI\Control
 {
 
-	/** @var \GrandMedia\Widgets\Items */
+	/**
+	 * @var \GrandMedia\Widgets\Items
+	 */
 	private $items;
 
-	/** @var string */
+	/**
+	 * @var string
+	 */
 	private $templateFile;
 
 	public function __construct(Items $items, string $templateFile)
