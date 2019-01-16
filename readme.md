@@ -10,7 +10,7 @@ GrandMedia/Widgets
 Installation
 ------------
 
-The best way to install GrandMedia/Items is using  [Composer](http://getcomposer.org/):
+The best way to install GrandMedia/Widgets is using  [Composer](http://getcomposer.org/):
 
 ```sh
 $ composer require grand-media/widgets

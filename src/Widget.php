@@ -10,9 +10,9 @@ final class Widget extends \Nette\Application\UI\Control
 {
 
 	/**
-	 * @var \GrandMedia\Widgets\Items
+	 * @var \GrandMedia\Widgets\Components
 	 */
-	private $items;
+	private $components;
 
 	/**
 	 * @var string
@@ -24,13 +24,13 @@ final class Widget extends \Nette\Application\UI\Control
 	 */
 	private $translator;
 
-	public function __construct(Items $items, string $templateFile, ?ITranslator $translator = null)
+	public function __construct(Components $components, string $templateFile, ?ITranslator $translator = null)
 	{
 		parent::__construct();
 
 		Assertion::file($templateFile);
 
-		$this->items = $items;
+		$this->components = $components;
 		$this->templateFile = $templateFile;
 		$this->translator = $translator;
 	}
@@ -44,7 +44,7 @@ final class Widget extends \Nette\Application\UI\Control
 
 		$template->setParameters(
 			[
-				'indexes' => $this->items->getIndexes(),
+				'positions' => $this->components->getPositions(),
 			]
 		);
 
@@ -57,7 +57,7 @@ final class Widget extends \Nette\Application\UI\Control
 	 */
 	protected function createComponent($name): Control
 	{
-		return $this->items->getControl((int) $name);
+		return $this->components->getControl((int) $name);
 	}
 
 }
